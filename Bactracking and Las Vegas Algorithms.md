@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import random
 
 # Load and display maze
-def load_maze(image_path):
-    maze = plt.imread(image_path)
+def load_maze(maze-2.png):
+    maze = plt.imread(maze-2.png)
     plt.imshow(maze)
     plt.show()
     return maze
