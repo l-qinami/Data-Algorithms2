@@ -1,0 +1,28 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+
+# Depict the original graph
+def plot_graph(graph):
+    pos = nx.spring_layout(graph)
+    nx.draw(graph, pos, with_labels=True)
+    labels = nx.get_edge_attributes(graph, 'weight')
+    nx.draw_networkx_edge_labels(graph, pos, edge_labels=labels)
+    plt.show()
+
+# Kruskal's algorithm implementation
+def kruskal_mst(graph):
+    mst = nx.Graph()
+    edges = sorted(graph.edges(data=True), key=lambda x: x[2]['weight'])
+    
+    for edge in edges:
+        u, v, weight = edge
+        if not nx.has_path(mst, u, v):
+            mst.add_edge(u, v, weight=weight['weight'])
+    
+    return mst
+
+# Example Graph
+graph = nx.Graph()
+graph.add_edge('A', 'B', weight=4)
+graph.add_edge('A', 'H', weight=8)
+# (Add the remaining edges)
